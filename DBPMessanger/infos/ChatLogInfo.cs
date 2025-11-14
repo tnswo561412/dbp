@@ -17,8 +17,6 @@ namespace DBPMessanger.Item
 
         [Key] public long Id { get; set; }
 
-
-
         public required long SenderUserId { get; set; }
         public required long TargetUserId { get; set; }
 
