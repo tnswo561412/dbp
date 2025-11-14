@@ -16,7 +16,7 @@ namespace DBPMessanger.Config
         public DbSet<ChatLogInfo> ChatLogs { get; set; }
 
         // 서버 연결 설정하기
-        private string connectionStr = "11";
+        private string connectionStr = "server=;port=3306;database=;user=;password=";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -53,7 +53,85 @@ namespace DBPMessanger.Config
                 .HasOne(u => u.Department)          // 일대다      
                 .WithMany(d => d.Users)          
                 .HasForeignKey(u => u.DepartmentId) 
-                .OnDelete(DeleteBehavior.SetNull);  
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<UserInfo>()
+                .Property(u => u.Role)
+                .HasConversion<string>();
+
+            // Favorites 관계
+            modelBuilder.Entity<FavoritesInfo>()
+               .HasOne(u => u.TargetUser)          // 일대다      
+               .WithMany()
+               .HasForeignKey(u => u.TargetUserId)
+               .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<FavoritesInfo>()
+                .HasOne(u => u.User)
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // LoginLog 관계
+            modelBuilder.Entity<LoginLog>()
+               .HasOne(u => u.User)
+               .WithMany()
+               .HasForeignKey(u => u.UserId)
+               .OnDelete(DeleteBehavior.SetNull);
+
+            // MutiProfile 관계
+            modelBuilder.Entity<MultiProfileInfo>()
+                .HasOne(u => u.User)
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<MultiProfileInfo>()
+                .HasOne(u => u.TargetUser)
+                .WithMany()
+                .HasForeignKey(u => u.TargetUserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // 권한 관리 관계
+
+            // 채팅
+            modelBuilder.Entity<AuthorityChatInfo>()
+                .HasOne(u => u.User)
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<AuthorityChatInfo>()
+                .HasOne(u => u.TargetUser)
+                .WithMany()
+                .HasForeignKey(u => u.TargetUserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // 부서
+            modelBuilder.Entity<AuthorityDepartmentInfo>()
+                .HasOne(u => u.User)
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<AuthorityDepartmentInfo>()
+                .HasOne(u => u.TargetUser)
+                .WithMany()
+                .HasForeignKey(u => u.TargetUserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // 개인
+            modelBuilder.Entity<AuthorityUserInfo>()
+               .HasOne(u => u.User)
+               .WithMany()
+               .HasForeignKey(u => u.UserId)
+               .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<AuthorityUserInfo>()
+                .HasOne(u => u.TargetUser)
+                .WithMany()
+                .HasForeignKey(u => u.TargetUserId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
