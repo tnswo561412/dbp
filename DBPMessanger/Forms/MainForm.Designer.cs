@@ -41,6 +41,7 @@
             listBoxChats = new ListBox();
             tabPage3 = new TabPage();
             imageList = new ImageList(components);
+            button_logout = new Button();
             tabControlChatList.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -94,6 +95,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(button_logout);
             splitContainer1.Panel2.Controls.Add(treeViewEmployee);
             splitContainer1.Size = new Size(319, 578);
             splitContainer1.SplitterDistance = 94;
@@ -187,6 +189,16 @@
             imageList.Images.SetKeyName(1, "chat.png");
             imageList.Images.SetKeyName(2, "setting.png");
             // 
+            // button_logout
+            // 
+            button_logout.Location = new Point(222, 422);
+            button_logout.Name = "button_logout";
+            button_logout.Size = new Size(75, 23);
+            button_logout.TabIndex = 1;
+            button_logout.Text = "로그아웃";
+            button_logout.UseVisualStyleBackColor = true;
+            button_logout.Click += button_logout_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -223,5 +235,6 @@
         private SplitContainer splitContainer1;
         private Label label2;
         private TreeView treeViewEmployee;
+        private Button button_logout;
     }
 }

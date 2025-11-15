@@ -13,14 +13,16 @@ namespace DBPMessanger.infos
     {
         [Key] public long Id { get; set; }
 
-        public required long UserId { get; set; }
+        public long UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public UserInfo User { get; set; }
 
         public DateTime? LoginTime { get; set; }
 
-        public DateTime? LogOutTime { get; set; }
+        public DateTime? LogoutTime { get; set; }
+
+        
 
     }
 }

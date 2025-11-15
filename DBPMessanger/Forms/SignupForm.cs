@@ -16,5 +16,10 @@ namespace DBPMessanger.Forms
         {
             InitializeComponent();
         }
+
+        private void label_nickname_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

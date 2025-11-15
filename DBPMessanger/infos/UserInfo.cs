@@ -30,12 +30,13 @@ namespace DBPMessanger.infos
         public string? Nickname { get; set; }
         public DateTime? Birthday { get; set; }
 
-        public required long DepartmentId { get; set; }
+        public long? DepartmentId { get; set; }
 
         // 내비게이션 프로퍼티
         [ForeignKey(nameof(DepartmentId))]
-        public DepartmentInfo Department { get; set; }
+        public DepartmentInfo? Department { get; set; }
 
+        // Role이 null값이 가능함 : 미설정 사용자 -> 기본 USER 취급하도록
         public ROLE? Role { get; set; }
 
         public UserInfo() { }

@@ -14,6 +14,7 @@ namespace DBPMessanger.Config
         public DbSet<UserInfo> Users { get; set; }
         public DbSet<DepartmentInfo> Departments { get; set; }
         public DbSet<ChatLogInfo> ChatLogs { get; set; }
+        public DbSet<LoginLog> LoginLogs { get; set; } // 로그인 기록 테이블
 
         // 서버 연결 설정하기
         private string connectionStr = "server=223.130.151.111;port=3306;database=s5820215;user=s5820215;password=s5820215";
@@ -55,6 +56,7 @@ namespace DBPMessanger.Config
                 .HasForeignKey(u => u.DepartmentId) 
                 .OnDelete(DeleteBehavior.SetNull);
 
+            // enum을 DB 문자열 ADMIN, USER로 저장, + NULL 허용
             modelBuilder.Entity<UserInfo>()
                 .Property(u => u.Role)
                 .HasConversion<string>();

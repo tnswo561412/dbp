@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+using DBPMessanger.Config;
+
 namespace DBPMessanger.Forms
 {
     public partial class MainForm : Form
@@ -36,7 +38,7 @@ namespace DBPMessanger.Forms
                 q => q.Include(d => d.Users)
                 .OrderBy(d => d.Name)) ?? new List<DepartmentInfo>();
 
-            if(departments.Count == 0)
+            if (departments.Count == 0)
                 return;
 
             // 최상위 부서들 (ParentId가 null)
@@ -110,7 +112,7 @@ namespace DBPMessanger.Forms
             else
             {
                 form.Focus();
-            }      
+            }
         }
 
         private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -143,7 +145,7 @@ namespace DBPMessanger.Forms
                     && c.Target.Id == OwnerUserManager.Instance.userInfo.Id)
                     || (c.Sender.Id == OwnerUserManager.Instance.userInfo.Id
                     && c.Target.Id == user.Id))
-                    .OrderByDescending(c => c.MessageTime))?? Enumerable.Empty<ChatLogInfo>(); ;
+                    .OrderByDescending(c => c.MessageTime)) ?? Enumerable.Empty<ChatLogInfo>(); ;
 
                 var chat = lastChat.FirstOrDefault();
 
@@ -184,6 +186,19 @@ namespace DBPMessanger.Forms
             e.Graphics.DrawString(item.chatLog.Message, e.Font, Brushes.Black, e.Bounds.X + 50, e.Bounds.Y + 16);
 
             e.DrawFocusRectangle();
+        }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            LogoutHelper.PerformLogout();
+            Close();
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            // 사용자가 강제로 닫은 경우도 처리
+            LogoutHelper.PerformLogout();
+            base.OnFormClosed(e);
         }
     }
 }
