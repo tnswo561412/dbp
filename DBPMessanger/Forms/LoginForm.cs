@@ -21,7 +21,7 @@ namespace DBPMessanger.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string text = textBox1.Text;
+            string text = textBox_ID.Text;
             int i = int.Parse(text);
 
             // 임시 데이터 로그인 시에 받아올 유저정보

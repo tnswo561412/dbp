@@ -30,4 +30,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="로그인 + 회원가입 부분 클래스\" />
+  </ItemGroup>
+
 </Project>

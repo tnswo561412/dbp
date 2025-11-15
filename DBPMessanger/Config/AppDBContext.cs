@@ -16,7 +16,7 @@ namespace DBPMessanger.Config
         public DbSet<ChatLogInfo> ChatLogs { get; set; }
 
         // 서버 연결 설정하기
-        private string connectionStr = "server=;port=3306;database=;user=;password=";
+        private string connectionStr = "server=223.130.151.111;port=3306;database=s5820215;user=s5820215;password=s5820215";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
