@@ -11,9 +11,9 @@ namespace DBPMessanger.Items
     public class ChatItem
     {
         public UserInfo target { get; set; }
-        public ChatLogInfo chatLog { get; set; }
+        public ChatLogInfo? chatLog { get; set; }
 
-        public ChatItem(UserInfo target, ChatLogInfo chatLog)
+        public ChatItem(UserInfo target, ChatLogInfo? chatLog = null)
         {
             this.target = target;
             this.chatLog = chatLog;

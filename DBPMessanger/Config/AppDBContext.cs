@@ -17,7 +17,8 @@ namespace DBPMessanger.Config
         public DbSet<LoginLog> LoginLogs { get; set; } // 로그인 기록 테이블
 
         // 서버 연결 설정하기
-        private string connectionStr = "server=;port=3306;database=;user=;password=";
+        // 아래 정보를 본인의 MySQL 서버 정보로 수정하세요
+        private string connectionStr = "server=localhost;port=3306;database=dbp_messenger;user=root;password=gl2434gl";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

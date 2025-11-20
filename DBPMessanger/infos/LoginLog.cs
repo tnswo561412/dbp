@@ -13,10 +13,10 @@ namespace DBPMessanger.infos
     {
         [Key] public long Id { get; set; }
 
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public UserInfo User { get; set; }
+        public UserInfo? User { get; set; }
 
         public DateTime? LoginTime { get; set; }
 

@@ -16,10 +16,24 @@ namespace DBPMessanger
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            // ¾Û °­Á¦ Á¾·á µî ºñÁ¤»ó ÄÉÀÌ½º ´ëºñ ¾ÈÀüÀåÄ¡
+
+            // DB ìžë™ ìƒì„± ë° ë§ˆì´ê·¸ë ˆì´ì…˜ (ì²˜ìŒ ì‹¤í–‰ ì‹œ í…Œì´ë¸” ìƒì„±)
+            try
+            {
+                using var db = new AppDBContext();
+                db.Database.EnsureCreated(); // DBê°€ ì—†ìœ¼ë©´ ìƒì„±
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DB ì´ˆê¸°í™” ì˜¤ë¥˜: {ex.Message}\n\nAppDBContext.csì—ì„œ DB ì—°ê²° ë¬¸ìžì—´ì„ í™•ì¸í•˜ì„¸ìš”.",
+                    "DB ì˜¤ë¥˜", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡
             Application.ApplicationExit += (_, __) =>
             {
-                // È¤½Ã ³²¾Æ ÀÖ´Â ¹ÌÁ¾·á ¼¼¼Ç Ã³¸®
+                // È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
                 LogoutHelper.PerformLogout();
             };
 
@@ -31,7 +45,7 @@ namespace DBPMessanger
                 if (login.ShowDialog() != DialogResult.OK) break;
 
                 Application.Run(new MainForm());
-                // ¸ÞÀÎ Æû ´ÝÈú ¶§ ¼¼¼Ç Á¾·á(Áßº¹ ¾ÈÀü)
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½)
             }
 
             // Manager
