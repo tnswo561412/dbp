@@ -18,7 +18,7 @@ namespace DBPMessanger.Config
 
         // 서버 연결 설정하기
         // 아래 정보를 본인의 MySQL 서버 정보로 수정하세요
-        private string connectionStr = "server=localhost;port=3306;database=dbp_messenger;user=root;password=gl2434gl";
+        private string connectionStr = "server=223.130.151.111;port=3306;database=s5701454;user=s5701454;password=s5701454";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,6 +28,17 @@ namespace DBPMessanger.Config
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // 테이블 이름 매핑 (덤프 파일의 테이블 이름과 일치시키기)
+            modelBuilder.Entity<UserInfo>().ToTable("user");
+            modelBuilder.Entity<DepartmentInfo>().ToTable("department");
+            modelBuilder.Entity<ChatLogInfo>().ToTable("chatlog");
+            modelBuilder.Entity<LoginLog>().ToTable("loginlog");
+            modelBuilder.Entity<FavoritesInfo>().ToTable("favorites");
+            modelBuilder.Entity<MultiProfileInfo>().ToTable("multiprofile");
+            modelBuilder.Entity<AuthorityChatInfo>().ToTable("authoritychat");
+            modelBuilder.Entity<AuthorityDepartmentInfo>().ToTable("authoritydepartment");
+            modelBuilder.Entity<AuthorityUserInfo>().ToTable("authorityuser");
+
             // 삭제 옵션 Cascade / Restrict / SetNull / NoAction
 
             // ChatLog 관계 설정

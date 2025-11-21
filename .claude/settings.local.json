@@ -11,7 +11,13 @@
       "Bash(dotnet tool install:*)",
       "Bash(dotnet tool uninstall:*)",
       "Bash(dotnet ef database update:*)",
-      "Bash(rd /s /q \"C:\\Users\\tnswo\\source\\repos\\dbp1\\DBPMessanger\\Migrations\")"
+      "Bash(rd /s /q \"C:\\Users\\tnswo\\source\\repos\\dbp1\\DBPMessanger\\Migrations\")",
+      "Bash(dotnet add package:*)",
+      "Bash(dotnet run)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell:*)",
+      "Bash(copy:*)",
+      "Bash(del TestConnection.cs)"
     ],
     "deny": [],
     "ask": []

@@ -67,21 +67,23 @@
             splitContainerChatList.Panel2.SuspendLayout();
             splitContainerChatList.SuspendLayout();
             SuspendLayout();
-            // 
+            //
             // tabControlChatList
-            // 
+            //
             tabControlChatList.Alignment = TabAlignment.Left;
+            tabControlChatList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControlChatList.Controls.Add(tabPage1);
             tabControlChatList.Controls.Add(tabPage2);
             tabControlChatList.Controls.Add(tabPage3);
+            tabControlChatList.Font = new Font("Segoe UI", 9F);
             tabControlChatList.ImageList = imageList;
-            tabControlChatList.ItemSize = new Size(50, 50);
-            tabControlChatList.Location = new Point(0, 0);
+            tabControlChatList.ItemSize = new Size(60, 60);
+            tabControlChatList.Location = new Point(12, 12);
             tabControlChatList.Multiline = true;
             tabControlChatList.Name = "tabControlChatList";
             tabControlChatList.Padding = new Point(15, 3);
             tabControlChatList.SelectedIndex = 0;
-            tabControlChatList.Size = new Size(383, 592);
+            tabControlChatList.Size = new Size(876, 626);
             tabControlChatList.TabIndex = 2;
             // 
             // tabPage1
@@ -113,7 +115,6 @@
             //
             // splitContainer1.Panel2
             //
-            splitContainer1.Panel2.Controls.Add(button_logout);
             splitContainer1.Panel2.Controls.Add(treeViewEmployee);
             splitContainer1.Size = new Size(319, 578);
             splitContainer1.SplitterDistance = 115;
@@ -153,7 +154,7 @@
             //
             buttonSearch.Location = new Point(244, 55);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(60, 23);
+            buttonSearch.Size = new Size(70, 28);
             buttonSearch.TabIndex = 3;
             buttonSearch.Text = "검색";
             buttonSearch.UseVisualStyleBackColor = true;
@@ -163,7 +164,7 @@
             //
             buttonClearSearch.Location = new Point(12, 84);
             buttonClearSearch.Name = "buttonClearSearch";
-            buttonClearSearch.Size = new Size(80, 23);
+            buttonClearSearch.Size = new Size(85, 28);
             buttonClearSearch.TabIndex = 4;
             buttonClearSearch.Text = "초기화";
             buttonClearSearch.UseVisualStyleBackColor = true;
@@ -265,7 +266,7 @@
             listBoxChats.ContextMenuStrip = contextMenuChatList;
             listBoxChats.DrawMode = DrawMode.OwnerDrawFixed;
             listBoxChats.FormattingEnabled = true;
-            listBoxChats.ItemHeight = 60;
+            listBoxChats.ItemHeight = 70;
             listBoxChats.Location = new Point(0, 3);
             listBoxChats.Name = "listBoxChats";
             listBoxChats.Size = new Size(325, 484);
@@ -327,25 +328,31 @@
             imageList.Images.SetKeyName(0, "person.png");
             imageList.Images.SetKeyName(1, "chat.png");
             imageList.Images.SetKeyName(2, "setting.png");
-            // 
+            //
             // button_logout
-            // 
-            button_logout.Location = new Point(222, 422);
+            //
+            button_logout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_logout.Location = new Point(790, 20);
             button_logout.Name = "button_logout";
-            button_logout.Size = new Size(75, 23);
+            button_logout.Size = new Size(90, 32);
             button_logout.TabIndex = 1;
             button_logout.Text = "로그아웃";
             button_logout.UseVisualStyleBackColor = true;
             button_logout.Click += button_logout_Click;
-            // 
+            //
             // MainForm
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 591);
+            BackColor = Color.FromArgb(245, 247, 250);
+            ClientSize = new Size(900, 650);
+            Controls.Add(button_logout);
             Controls.Add(tabControlChatList);
+            FormBorderStyle = FormBorderStyle.Sizable;
+            MinimumSize = new Size(600, 500);
             Name = "MainForm";
-            Text = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "DBP Messenger";
             tabControlChatList.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
