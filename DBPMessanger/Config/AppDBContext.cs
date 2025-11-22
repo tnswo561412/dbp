@@ -15,6 +15,11 @@ namespace DBPMessanger.Config
         public DbSet<DepartmentInfo> Departments { get; set; }
         public DbSet<ChatLogInfo> ChatLogs { get; set; }
         public DbSet<LoginLog> LoginLogs { get; set; } // 로그인 기록 테이블
+        public DbSet<FavoritesInfo> Favorites { get; set; } // 즐겨찾기 테이블
+        public DbSet<MultiProfileInfo> MultiProfiles { get; set; } // 멀티프로필 테이블
+        public DbSet<AuthorityChatInfo> AuthorityChats { get; set; } // 채팅 권한 테이블
+        public DbSet<AuthorityDepartmentInfo> AuthorityDepartments { get; set; } // 부서 권한 테이블
+        public DbSet<AuthorityUserInfo> AuthorityUsers { get; set; } // 사용자 권한 테이블
 
         // 서버 연결 설정하기
         // 아래 정보를 본인의 MySQL 서버 정보로 수정하세요
@@ -39,6 +44,15 @@ namespace DBPMessanger.Config
             modelBuilder.Entity<AuthorityDepartmentInfo>().ToTable("authoritydepartment");
             modelBuilder.Entity<AuthorityUserInfo>().ToTable("authorityuser");
 
+            // enum을 DB 문자열 ADMIN, USER로 저장, + NULL 허용
+            modelBuilder.Entity<UserInfo>()
+                .Property(u => u.Role)
+                .HasConversion<string>();
+
+            // 외래키 관계 설정은 DB 권한 문제로 주석 처리
+            // 애플리케이션 레벨에서 데이터 무결성 관리 필요
+
+            /*
             // 삭제 옵션 Cascade / Restrict / SetNull / NoAction
 
             // ChatLog 관계 설정
@@ -63,19 +77,14 @@ namespace DBPMessanger.Config
 
             // User 관계
             modelBuilder.Entity<UserInfo>()
-                .HasOne(u => u.Department)          // 일대다      
-                .WithMany(d => d.Users)          
-                .HasForeignKey(u => u.DepartmentId) 
+                .HasOne(u => u.Department)          // 일대다
+                .WithMany(d => d.Users)
+                .HasForeignKey(u => u.DepartmentId)
                 .OnDelete(DeleteBehavior.SetNull);
-
-            // enum을 DB 문자열 ADMIN, USER로 저장, + NULL 허용
-            modelBuilder.Entity<UserInfo>()
-                .Property(u => u.Role)
-                .HasConversion<string>();
 
             // Favorites 관계
             modelBuilder.Entity<FavoritesInfo>()
-               .HasOne(u => u.TargetUser)          // 일대다      
+               .HasOne(u => u.TargetUser)          // 일대다
                .WithMany()
                .HasForeignKey(u => u.TargetUserId)
                .OnDelete(DeleteBehavior.SetNull);
@@ -146,6 +155,7 @@ namespace DBPMessanger.Config
                 .WithMany()
                 .HasForeignKey(u => u.TargetUserId)
                 .OnDelete(DeleteBehavior.SetNull);
+            */
         }
     }
 }

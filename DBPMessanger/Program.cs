@@ -2,6 +2,7 @@ using DBPMessanger.Forms;
 using DBPMessanger.infos;
 using DBPMessanger.Managers;
 using DBPMessanger.Config;
+using Microsoft.EntityFrameworkCore;
 
 namespace DBPMessanger
 {
@@ -18,6 +19,7 @@ namespace DBPMessanger
             ApplicationConfiguration.Initialize();
 
             // DB 자동 생성 및 마이그레이션 (처음 실행 시 테이블 생성)
+            // 원격 서버 연결 실패 시에도 애플리케이션은 계속 실행
             try
             {
                 using var db = new AppDBContext();
@@ -25,9 +27,9 @@ namespace DBPMessanger
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"DB 초기화 오류: {ex.Message}\n\nAppDBContext.cs에서 DB 연결 문자열을 확인하세요.",
-                    "DB 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                // 연결 실패 시 조용히 무시 (로그인 시 다시 시도)
+                System.Diagnostics.Debug.WriteLine($"DB 초기화 경고: {ex.Message}");
+                // 사용자에게 메시지 표시하지 않고 계속 진행
             }
 
             // �� ���� ���� �� ������ ���̽� ��� ������ġ

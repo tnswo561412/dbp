@@ -46,22 +46,22 @@
             textBox_ID.TabIndex = 0;
             // 
             // button_login
-            // 
+            //
             button_login.Location = new Point(230, 229);
             button_login.Name = "button_login";
             button_login.Size = new Size(75, 23);
-            button_login.TabIndex = 1;
+            button_login.TabIndex = 4;
             button_login.Text = "로그인";
             button_login.UseVisualStyleBackColor = true;
             button_login.Click += button_login_Click;
             // 
             // button1
-            // 
+            //
             button1.Location = new Point(374, 230);
             button1.Margin = new Padding(2, 1, 2, 1);
             button1.Name = "button1";
             button1.Size = new Size(75, 22);
-            button1.TabIndex = 2;
+            button1.TabIndex = 5;
             button1.Text = "회원가입";
             button1.UseVisualStyleBackColor = true;
             // 
@@ -86,39 +86,41 @@
             label_PW.Text = "PW";
             // 
             // textBox_PW
-            // 
+            //
             textBox_PW.Location = new Point(230, 149);
             textBox_PW.Margin = new Padding(2, 1, 2, 1);
             textBox_PW.Name = "textBox_PW";
+            textBox_PW.PasswordChar = '●';
             textBox_PW.Size = new Size(220, 23);
-            textBox_PW.TabIndex = 5;
+            textBox_PW.TabIndex = 1;
             // 
             // checkBox_auto_ID_PW
-            // 
+            //
             checkBox_auto_ID_PW.AutoSize = true;
             checkBox_auto_ID_PW.Location = new Point(230, 190);
             checkBox_auto_ID_PW.Margin = new Padding(2, 1, 2, 1);
             checkBox_auto_ID_PW.Name = "checkBox_auto_ID_PW";
             checkBox_auto_ID_PW.Size = new Size(116, 19);
-            checkBox_auto_ID_PW.TabIndex = 6;
+            checkBox_auto_ID_PW.TabIndex = 2;
             checkBox_auto_ID_PW.Text = "ID PW 자동 입력";
             checkBox_auto_ID_PW.UseVisualStyleBackColor = true;
             checkBox_auto_ID_PW.CheckedChanged += checkBox_auto_ID_PW_CheckedChanged;
             // 
             // checkBox_auto_login
-            // 
+            //
             checkBox_auto_login.AutoSize = true;
             checkBox_auto_login.Location = new Point(374, 190);
             checkBox_auto_login.Margin = new Padding(2, 1, 2, 1);
             checkBox_auto_login.Name = "checkBox_auto_login";
             checkBox_auto_login.Size = new Size(90, 19);
-            checkBox_auto_login.TabIndex = 7;
+            checkBox_auto_login.TabIndex = 3;
             checkBox_auto_login.Text = "자동 로그인";
             checkBox_auto_login.UseVisualStyleBackColor = true;
             checkBox_auto_login.CheckedChanged += checkBox_auto_login_CheckedChanged;
             // 
             // LoginForm
-            // 
+            //
+            AcceptButton = button_login;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
